@@ -1,6 +1,6 @@
 {
-  "name": "burdamagazinorg/thunder-distribution",
-  "description": "The thunder distribution",
+  "name": "burdamagazinorg/thunder-infrastructure",
+  "description": "The thunder infrastructure",
   "type": "project",
   "authors": [
     {
@@ -12,7 +12,7 @@
   "prefer-stable": true,
   "require-dev": {
     "phing/phing": "2.*",
-    "drush/drush": "8.0.0",
-    "drupal/console": "dev-master"
+    "drush/drush": "8.0.2",
+    "drupal/console": "0.10.6"
   }
 }

@@ -26,7 +26,7 @@ Visit [thunder](https://www.drupal.org/project/thunder) and download the most re
 This assumes, that "~/your-project-dir" is your local path to an existing git repository for your project
 Add the thunder repository to your repository as an upstream repository and fetch the content
 
-    ~/your-project-dir $ git remote add upstream git@github.com:BurdaMagazinOrg/thunder.git
+    ~/your-project-dir $ git remote add upstream git@github.com:BurdaMagazinOrg/thunder-infrastructure.git
     ~/your-project-dir $ git fetch upstream
     
 Now merge the core to your project, you can merge a specific version tag or simply master, which points the most current release
@@ -92,7 +92,7 @@ Include settings.local.php in docroot/sites/default/settings.php (see the exampl
 Now you can install drupal, first enter the drupal directory and use drush to install the site:
 
     ~/your-project-dir $ cd docroot
-    ~/your-project-dir/docroot $ drush site-install standard --yes --notify --site-name="Project name" --account-name=admin --account-pass=admin --site-mail=admin@example.com
+    ~/your-project-dir/docroot $ drush site-install thunder --yes --notify --site-name="Project name" --account-name=admin --account-pass=admin --site-mail=admin@example.com
 
 #### Prepare travis
 Copy .example.travis.yml to .travis.yml, open the file and replace <insert-your-profile> with your installation profile.
