@@ -4,6 +4,9 @@ sudo: false
 php:
   - 5.6
 
+git:
+  depth: 5
+
 # travis will test and deploy only the branches and tags as show below
 # right now travis does not make a difference between branches and tags
 # tags starting with hotfix and tags in the form of "v1.0.0" will be tested
@@ -46,6 +49,10 @@ install:
   - BEHAT_PARAMS=`echo $BEHAT_PARAMS | sed -e s#BUILD_TOP#$TRAVIS_BUILD_DIR#`
   - export BEHAT_PARAMS
 
+  # Get and start Selenium
+  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.1.jar
+  - java -jar selenium-server-standalone-2.42.1.jar > /dev/null 2>&1 &
+
   # Build the current branch
   - echo "environment=travis" >> build.properties
   - phing make
@@ -59,11 +66,6 @@ install:
   - sh -e /etc/init.d/xvfb start
   - sleep 5
 
-  # Get Selenium
-  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.1.jar
-  - java -jar selenium-server-standalone-2.42.1.jar > /dev/null 2>&1 &
-  - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 5; done
-
   # Disable sendmail
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 
@@ -74,6 +76,7 @@ install:
   # Increase the MySQL server timetout and packet size.
   - mysql -e "SET GLOBAL wait_timeout = 36000;"
   - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
+
 
 before_script:
   - phpenv config-rm xdebug.ini
@@ -87,11 +90,13 @@ before_script:
   - drush pm-uninstall dblog --yes
   - drush cset system.site page.front /taxonomy/term/1 --yes
 
-  # Start server
+  # Start web server
   - drush runserver 8888 > /dev/null 2>&1 &
-  - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 5; done
   - cd ../tests/behat
 
+  # Test servers
+  - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 5; done
+  - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 5; done
 script:
   # Run Behat tests.
   - ./bin/behat --config behat.travis.yml

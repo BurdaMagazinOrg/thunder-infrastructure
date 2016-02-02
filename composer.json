@@ -11,7 +11,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require-dev": {
-    "phing/phing": "2.*",
+    "phing/phing": "2.13.0",
     "drush/drush": "8.0.2",
     "drupal/console": "0.10.6"
   }
