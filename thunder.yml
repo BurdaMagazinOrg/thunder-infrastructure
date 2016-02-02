@@ -5,10 +5,26 @@ defaults:
   projects:
     subdir: "contrib"
 
+includes:
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org-core.make.yml
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml
+
 # Drupal core
 projects:
-  thunder:
+  drupal:
     type: "core"
-    version: "8.x-1.x-dev"
+    version: "8.0.2"
     translations:
       - de
+
+  thunder:
+    type: profile
+    download:
+      type: git
+      branch: 8.x-1.x
+
+  redirect:
+    type: "module"
+    download:
+      url: "https://github.com/md-systems/redirect.git"
+      revision: "f04c2847844f962ce14ba35bfa801b88257107ab"
