@@ -6,7 +6,6 @@ defaults:
     subdir: "contrib"
 
 includes:
-  - http://cgit.drupalcode.org/thunder/plain/drupal-org-core.make.yml
   - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml
 
 # Drupal core

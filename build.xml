@@ -4,13 +4,14 @@
     <resolvepath propertyName="base.dir" file="./"/>
     <import file="${base.dir}/build.pre.xml" optional="true"/>
     <import file="${base.dir}/build.post.xml" optional="true"/>
-    <target name="make">
+    <target name="download">
         <if>
-          <available file="${base.dir}/build.pre.xml" type="file" />
-          <then>
-            <phingcall target="prebuild" />
-          </then>
+            <available file="${base.dir}/build.pre.xml" type="file" />
+            <then>
+                <phingcall target="prebuild" />
+            </then>
         </if>
+
         <if>
             <available file='${base.dir}/docroot/sites/default' type='dir'/>
             <then>
@@ -40,6 +41,16 @@
                 </drush>
             </else>
         </if>
+
+        <if>
+          <available file="${base.dir}/build.post.xml" type="file" />
+          <then>
+            <phingcall target="postbuild" />
+          </then>
+        </if>
+    </target>
+
+    <target name="link_custom_code">
         <if>
             <equals arg1="${environment}" arg2="travis" />
             <then>
@@ -64,7 +75,6 @@
                         </copy>
                     </then>
                 </if>
-                <copy file="${base.dir}/travis/travis.settings.php" haltonerror="false" tofile="${base.dir}/docroot/sites/default/settings.php"/>
             </then>
             <else>
                 <symlink target="../../modules" link="./docroot/modules/custom" overwrite="true"/>
@@ -81,19 +91,26 @@
                     </then>
                 </if>
                 <mkdir dir="${base.dir}/docroot/sites/default/files" mode="777"/>
+            </else>
+        </if>
+    </target>
+
+    <target name="create_settings">
+        <if>
+            <equals arg1="${environment}" arg2="travis" />
+            <then>
+                <copy file="${base.dir}/travis/travis.settings.php" haltonerror="false" tofile="${base.dir}/docroot/sites/default/settings.php"/>
+            </then>
+            <else>
                 <copy file="${base.dir}/settings/settings.acquia.php" haltonerror="false" tofile="${base.dir}/docroot/sites/default/settings.php"/>
                 <copy file="${base.dir}/settings/settings.local.php" haltonerror="false" tofile="${base.dir}/docroot/sites/default/settings.local.php"/>
                 <drupal_db_settings settingsfile="${base.dir}/docroot/sites/default/settings.local.php" name="default" dbname="${dbname}" dbuser="${dbuser}" dbpassword="${dbpassword}" dbhost="${dbhost}" dbport="${dbport}"/>
             </else>
         </if>
-        <if>
-          <available file="${base.dir}/build.post.xml" type="file" />
-          <then>
-            <phingcall target="postbuild" />
-          </then>
-        </if>
     </target>
-    <target name="update" depends="make"/>
+
+    <target name="make" depends="download,link_custom_code,create_settings" />
+
     <includepath classpath="tools/phing"/>
     <taskdef name="drush" classname="DrushTask"/>
     <taskdef name="drupal_db_settings" classname="DrupalDbSettingsTask"/>
