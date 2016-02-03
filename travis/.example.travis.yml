@@ -42,7 +42,7 @@ install:
 
   # Build drush/phing dependencies
   - travis_retry composer self-update && composer --version
-  - cp travis/composer.auth.json ~/.composer/auth.json
+  - echo "{\"github-oauth\":{\"github.com\":\"$GITHUB_TOKEN\"}}" > ~/.composer/auth.json
   - travis_retry composer install --prefer-dist --no-interaction
   - export PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
   - cp $TRAVIS_BUILD_DIR/tools/drush/calculate_checksum.drush.inc $HOME/.drush/calculate_checksum.drush.inc

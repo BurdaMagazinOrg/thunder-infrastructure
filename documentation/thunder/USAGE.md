@@ -103,6 +103,3 @@ For further instructions, have a look in tests/behat/database.
 Copy example.travis.settings.php to travis.settings.php and replace <insert-your-profile> with your installation profile
 
     ~/your-project-dir $ cp tracis/example.travis.settings.php travis.settings.php
-
-Open travis/composer.auth.json on replace <your-github-oath-token> with your Github oath token.
-See [here](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for more instructions on how to generate one 
