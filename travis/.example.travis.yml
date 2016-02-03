@@ -46,7 +46,7 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction
   - export PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
   - cp $TRAVIS_BUILD_DIR/tools/drush/calculate_checksum.drush.inc $HOME/.drush/calculate_checksum.drush.inc
-  - rm $HOME/.drush/cache/default/*
+  - rm -f $HOME/.drush/cache/default/*
 
   # Build Behat dependencies
   - cd ./tests/behat
