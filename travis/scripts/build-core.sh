@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
 MAKEFILE_HASH="$(drush msha thunder.yml --porcelain=true)"
-FILE_PATH="${HOME}/articfacts/${MAKEFILE_HASH}.tar.gz"
+FILE_PATH="${HOME}/artifacts/${MAKEFILE_HASH}.tar.gz"
 
-echo ${FILE_PATH}
-
-if [ ! -d ~/articfacts ]
+if [ ! -d ~/artifacts ]
   then
-    mkdir ~/articfacts
+    mkdir ~/artifacts
 fi
 
 if [ -f ${FILE_PATH} ]
@@ -15,7 +13,6 @@ if [ -f ${FILE_PATH} ]
     tar -xzf "${FILE_PATH}" -C .
     phing link_custom_code
     phing create_settings
-
 
   else
     phing download

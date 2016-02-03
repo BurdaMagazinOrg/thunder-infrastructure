@@ -14,3 +14,5 @@ $databases['default']['default'] = array (
 $settings['hash_salt'] = 'change me!';
 
 $config_directories['sync'] = '../config/sync';
+
+$settings['install_profile'] = '<insert your profile>';
