@@ -692,7 +692,7 @@ if (file_exists('/var/www/site-php')) {
 
 $settings['install_profile'] = '<insert your profile>';
 $config_directories['active'] = '../config/active';
-$config_directories['staging'] = '../config/staging';
+$config_directories['sync'] = '../config/sync';
 
 
 /**

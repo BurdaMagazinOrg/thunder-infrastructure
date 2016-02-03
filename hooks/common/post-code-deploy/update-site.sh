@@ -21,7 +21,7 @@ checkout_path="/var/www/html/${site}.${target_env}"
 drush_cmd="drush8 --verbose @${site}.${target_env}"
 
 ${drush_cmd} sset system.maintenance_mode 1
-${drush_cmd} config-import --source=${checkout_path}/config/staging --yes
+${drush_cmd} config-import --source=${checkout_path}/config/sync --yes
 ${drush_cmd} updatedb --yes
-${drush_cmd} config-import --source=${checkout_path}/config/staging --yes
+${drush_cmd} config-import --source=${checkout_path}/config/sync --yes
 ${drush_cmd} sset system.maintenance_mode 0
