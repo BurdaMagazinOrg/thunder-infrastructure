@@ -14,7 +14,7 @@ if [ -f ${FILE_PATH} ]
     phing link_custom_code
     phing create_settings
   else
-    rm -v "${ARTIFACTS_CORE_PATH}/*.tar.gz"
+    rm -v $ARTIFACTS_CORE_PATH/*.tar.gz
     phing download
     tar -czf "${FILE_PATH}" docroot
     phing link_custom_code
