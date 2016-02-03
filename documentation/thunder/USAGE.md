@@ -95,10 +95,14 @@ Now you can install drupal, first enter the drupal directory and use drush to in
     ~/your-project-dir/docroot $ drush site-install thunder --yes --notify --site-name="Project name" --account-name=admin --account-pass=admin --site-mail=admin@example.com
 
 #### Prepare travis
-Copy .example.travis.yml to .travis.yml, open the file and replace <insert-your-profile> with your installation profile.
+Copy .example.travis.yml to .travis.yml, open the file and replace behat-thunder.sql with your database.
+For further instructions, have a look in tests/behat/database.
 
     ~/your-project-dir $ cp tracis/.example.travis.yml .travis.yml
  
-Copy example.travis.settings.php to travis.settings.php. This is the drupal settings file for travis.
+Copy example.travis.settings.php to travis.settings.php and replace <insert-your-profile> with your installation profile
 
     ~/your-project-dir $ cp tracis/example.travis.settings.php travis.settings.php
+
+Open travis/composer.auth.json on replace <your-github-oath-token> with your Github oath token.
+See [here](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for more instructions on how to generate one 
