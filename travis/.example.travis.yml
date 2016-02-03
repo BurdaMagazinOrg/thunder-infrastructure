@@ -65,7 +65,7 @@ install:
 
   # Build the current branch
   - echo "environment=travis" >> build.properties
-  - export MAKEFILE_HASH=`drush msha test-site.yml --porcelain=true`
+  - export MAKEFILE_HASH=`drush msha $PROJECT.yml --porcelain=true`
   - $TRAVIS_BUILD_DIR/travis/scripts/build-core.sh
 
   # Setup files
