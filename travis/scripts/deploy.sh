@@ -25,6 +25,11 @@ function deploy_to_acquia() {
     rm docroot/sites/default/settings.local.php
 
     git clone $ACQUIA_REPOSITORY acquia
+    if [ ! -d "acquia" ]
+    then
+        echo 'Could not checkout acquia repository.'
+        exit
+    fi
     cd acquia
 
     if [ "$COMMIT_TAG" == "" ]
