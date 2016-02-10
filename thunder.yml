@@ -6,7 +6,7 @@ defaults:
     subdir: "contrib"
 
 includes:
-  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?id=2b56468a7490f973c0088fa38f9b9626d25a4020
 
 # Drupal core
 projects:
@@ -21,6 +21,7 @@ projects:
     download:
       type: git
       branch: 8.x-1.x
+      revision: 2b56468a7490f973c0088fa38f9b9626d25a4020
 
   redirect:
     type: "module"
