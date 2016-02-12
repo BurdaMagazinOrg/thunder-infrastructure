@@ -24,6 +24,13 @@ projects:
       branch: 8.x-1.x
       revision: 4e8d74fbda33a01131a0cfbd568c1882c93a31e7
 
+  imagemagick:
+   type: "module"
+   download:
+     url: "http://git.drupal.org/project/imagemagick.git"
+     revision: "ee49196c8b8890ae2a5536b039351cbcd267ff2d"
+     branch: "8.x-1.x"
+
   redirect:
     type: "module"
     download:
