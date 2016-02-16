@@ -79,7 +79,7 @@ The file should at least contain the following lines:
 
 Copy example build properties file and change its content to match your environment. Replace the line makefile=thunder.yml with your makefile. 
 
-    ~/your-project-dir $ cp example.build.process build.process
+    ~/your-project-dir $ cp example.build.properties build.properties
 
 Use phing to create the site in the folder docroot
 
