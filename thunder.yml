@@ -6,8 +6,8 @@ defaults:
     subdir: "contrib"
 
 includes:
-  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?id=881f27cf2a3730b6da7246cda5ef9836161bde1b
-  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?id=881f27cf2a3730b6da7246cda5ef9836161bde1b
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?id=250d69bc02c574f3f6caf397a832c680dacd62c5
+  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?id=250d69bc02c574f3f6caf397a832c680dacd62c5
 
 # Drupal core
 projects:
@@ -22,7 +22,7 @@ projects:
     download:
       type: git
       branch: 8.x-1.x
-      revision: 881f27cf2a3730b6da7246cda5ef9836161bde1b
+      revision: 250d69bc02c574f3f6caf397a832c680dacd62c5
 
   acquia_connector:
     type: "module"
@@ -45,4 +45,4 @@ projects:
     type: "module"
     download:
       url: "https://github.com/md-systems/redirect.git"
-      revision: "f04c2847844f962ce14ba35bfa801b88257107ab"
+      revision: "34bee9a2e832d78ad691ced02993faf0c4cc67c1"
