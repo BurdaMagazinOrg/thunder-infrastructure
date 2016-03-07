@@ -6,23 +6,20 @@ defaults:
     subdir: "contrib"
 
 includes:
-  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?id=250d69bc02c574f3f6caf397a832c680dacd62c5
-  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?id=250d69bc02c574f3f6caf397a832c680dacd62c5
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?h=8.x-1.0-beta2
+  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?h=8.x-1.0-beta2
 
 # Drupal core
 projects:
   drupal:
     type: "core"
-    version: "8.0.3"
+    version: "8.0.4"
     translations:
       - de
 
   thunder:
     type: "profile"
-    download:
-      type: git
-      branch: 8.x-1.x
-      revision: 250d69bc02c574f3f6caf397a832c680dacd62c5
+    version: "1.0-beta2"
 
   acquia_connector:
     type: "module"
