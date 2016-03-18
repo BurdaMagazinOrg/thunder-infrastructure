@@ -1,6 +1,4 @@
-# Composer template for Drupal projects
-
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+# Composer template for Drupal Thunder projects based on drupal-composer/drupal-project
 
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
@@ -20,14 +18,14 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project burdamagazinorg/thunder:8.x-dev my-project-dir --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
 installation.
 
 ```
-cd some-dir
+cd my-project-dir
 composer require drupal/devel:8.*
 ```
 
@@ -39,29 +37,30 @@ all files not excluded by the .gitignore file.
 
 When installing the given `composer.json` some tasks are taken care of:
 
-* Drupal will be installed in the `web`-directory.
+* Drupal will be installed in the `docroot`-directory.
 * Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
+  instead of the one provided by Drupal (`docroot/vendor/autoload.php`).
+* Modules (packages of type `drupal-module`) will be placed in `docroot/modules/contrib/`
+* Theme (packages of type `drupal-theme`) will be placed in `docroot/themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `docroot/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
 * Creates `sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Latest version of drush is installed locally for use at `bin/drush`.
+* Latest version of DrupalConsole is installed locally for use at `bin/drupal`.
+* Latest version of behat is installed locally for use at `bin/behat`.
 
-## Updating Drupal Core
+## Updating Thunder
 
-This project will attempt to keep all of your Drupal Core files up-to-date; the 
+This project will attempt to keep all of your Thunder and drupal core files up-to-date; the 
 project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
 is used to ensure that your scaffold files are updated every time drupal/core is 
 updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
 you may need to merge conflicts if any of your modfied files are updated in a 
 new release of Drupal core.
 
-Follow the steps below to update your core files.
+Follow the steps below to update your thunder files.
 
-1. Run `composer update drupal/core`.
+1. Run `composer update burdamagazinorg/thunder`
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
@@ -73,13 +72,6 @@ Follow the steps below to update your core files.
    of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple; 
    keeping all of your modifications at the beginning or end of the file is a 
    good strategy to keep merges easy.
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
 
 ## FAQ
 
