@@ -1,6 +1,7 @@
 #!/bin/sh
 
 DOCUMENTROOT=docroot
+SETTINGSDIR=settings
 
 # Prepare the scaffold files if they are not already present
 if [ ! -f $DOCUMENTROOT/autoload.php ]
@@ -20,6 +21,15 @@ if [ ! -f $DOCUMENTROOT/sites/default/settings.php ]
     chmod 666 $DOCUMENTROOT/sites/default/settings.php
     echo "Create a sites/default/settings.php file with chmod 666"
 fi
+
+# Prepare the local settings file for installation
+if [ ! -f $DOCUMENTROOT/sites/default/settings.local.php ] && [ -f $SETTINGSDIR/settings.local.php ]
+  then
+    cp $SETTINGSDIR/settings.local.php $DOCUMENTROOT/sites/default/settings.local.php
+    chmod 666 $DOCUMENTROOT/sites/default/settings.local.php
+    echo "Create a sites/default/settings.local.php file with chmod 666"
+fi
+
 
 # Prepare the services file for installation
 if [ ! -f $DOCUMENTROOT/sites/default/services.yml ]

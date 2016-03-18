@@ -687,6 +687,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 // settings.php for development on your local workstation, set $db_url
 // (Drupal 5 or 6) or $databases (Drupal 7 or 8) as described in comments above.
 if (file_exists('/var/www/site-php')) {
+  die('Insert your acquia settings in settings.acquia.php');
   require('<insert your acquia settings file>');
 }
 

@@ -17,12 +17,12 @@ docroot/sites/default/files
 .DS_Store
 
 # Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
-sites/*/services*.yml
+docroot/sites/*/settings*.php
+docroot/sites/*/services*.yml
 
 # Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
+docroot/sites/*/files
+docroot/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
-drupal/sites/simpletest
+docroot/drupal/sites/simpletest
