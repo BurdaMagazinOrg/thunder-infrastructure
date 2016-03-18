@@ -109,6 +109,30 @@
         </if>
     </target>
 
+    <target name="sass_compile">
+        <fileset dir="${base.dir}/themes/" id="thefiles">
+            <include name="*" />
+            <exclude name="/" />
+            <exclude name="*.*" />
+            <type type="dir" />
+        </fileset>
+
+        <foreach param="filename" target="sass_compile_dir">
+            <fileset refid="thefiles" />
+        </foreach>
+    </target>
+
+    <target name="sass_compile_dir">
+
+        <if>
+            <available file='${base.dir}/themes/${filename}/Gemfile' type='file'/>
+            <then>
+                <exec command="bundler install" dir="themes/${filename}" />
+                <exec command="bundle exec compass compile -e production --force" dir="themes/${filename}" />
+            </then>
+        </if>
+    </target>
+
     <target name="make" depends="download,link_custom_code,create_settings" />
 
     <includepath classpath="tools/phing"/>
