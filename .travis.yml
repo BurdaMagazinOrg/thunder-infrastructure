@@ -46,11 +46,6 @@ install:
   - travis_retry composer install --prefer-dist --no-interaction
   - export PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
 
-  # Build Behat dependencies
-  - cd ./tests/behat
-  - travis_retry composer install --prefer-dist --no-interaction
-  - cd ../../
-
   # Setting Behat environment
   - BUILD_TOP=`dirname $TRAVIS_BUILD_DIR`
   - BEHAT_PARAMS='{"extensions":{"Drupal\\DrupalExtension":{"drupal":{"drupal_root":"BUILD_TOP/docroot"}}}}'
@@ -58,13 +53,8 @@ install:
   - export BEHAT_PARAMS
 
   # Get Selenium
-  - wget http://selenium-release.storage.googleapis.com/2.42/selenium-server-standalone-2.42.1.jar
-  - java -jar selenium-server-standalone-2.42.1.jar > /dev/null 2>&1 &
-
-  # Build the current branch
-  - echo "environment=travis" >> build.properties
-  - export MAKEFILE_HASH=`drush msha $PROJECT.yml --porcelain=true`
-  - $TRAVIS_BUILD_DIR/travis/scripts/build-core.sh
+  - wget http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar
+  - java -jar selenium-server-standalone-2.53.0.jar > /dev/null 2>&1 &
 
   # Setup files
   - chmod -R 777 docroot/sites/default
@@ -106,7 +96,7 @@ script:
   - ./bin/behat --config behat.travis.yml
 
 after_success:
-  - $TRAVIS_BUILD_DIR/travis/scripts/deploy.sh
+  - $TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh
 
 notifications:
   slack: burda-thunder:tZERC5knpxVIePPgokBdPZhI
