@@ -1,18 +1,69 @@
 {
-  "name": "burdamagazinorg/thunder-infrastructure",
-  "description": "The thunder infrastructure",
-  "type": "project",
-  "authors": [
-    {
-      "name": "Daniel Bosen",
-      "email": "daniel@bosen.eu"
+    "name": "burdamagazinorg/thunder-project",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupal.org/sandbox/riddle.com/2670272.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupal.org/sandbox/gos77/2677750.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupal.org/sandbox/gos77/2677752.git"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "~1",
+        "cweagans/composer-patches": "~1.0",
+        "burdamagazinorg/thunder": "8.x-1.x-dev",
+    },
+    "require-dev": {
+        "phing/phing": "~2.13",
+        "drush/drush": "~8.0",
+        "drupal/console": "~0.10",
+        "drupal/drupal-extension": "^3.1",
+        "guzzlehttp/guzzle" : "^6.0@dev",
+        "jcalderonzumba/gastonjs": "^1.1@dev",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*",
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "post-install-cmd": "sh ./scripts/composer/post-install.sh"
+    },
+    "extra": {
+        "installer-paths": {
+            "docroot/core": ["type:drupal-core"],
+            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        }
+    },
+    "config": {
+        "bin-dir": "bin/"
     }
-  ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "require-dev": {
-    "phing/phing": "2.13.0",
-    "drush/drush": "8.0.2",
-    "drupal/console": "0.10.6"
-  }
 }
