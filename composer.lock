@@ -1325,7 +1325,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/inline_entity_form",
-                "reference": "aa038b2d6723aee23932ab5c7e5d0851fe4ef366"
+                "reference": "17af53758a60b9959081bda88ca13a20d69ac1d3"
             },
             "require": {
                 "drupal/core": "8.*"
@@ -1342,7 +1342,7 @@
             ],
             "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities. ",
             "homepage": "https://www.drupal.org/project/inline_entity_form",
-            "time": "2016-03-18 12:15:03"
+            "time": "2016-03-18 21:09:58"
         },
         {
             "name": "drupal/media_entity",
