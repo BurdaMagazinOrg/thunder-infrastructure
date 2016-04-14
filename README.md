@@ -18,7 +18,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project burdamagazinorg/thunder:8.x-dev my-project-dir --stability dev --no-interaction
+composer create-project burdamagazinorg/thunder-infrastructure my-project-dir --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
