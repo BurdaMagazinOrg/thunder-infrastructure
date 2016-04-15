@@ -38,6 +38,4 @@ projects:
 
   redirect:
     type: "module"
-    download:
-      url: "https://github.com/md-systems/redirect.git"
-      revision: "f88e28a5033d2a9952929faff6fa59764583b80c"
+    version: "1.0-alpha1"
