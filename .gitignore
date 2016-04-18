@@ -27,3 +27,10 @@ docroot/sites/*/private
 # Ignore SimpleTest multi-site environment.
 docroot/drupal/sites/simpletest
 
+# Ignore base test files
+tests/behat/features/bootstrap
+tests/behat/features/thunder
+tests/behat/behat-base.yml
+
+# Ignore travi ci files
+ci/travis/scripts
