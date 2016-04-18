@@ -33,7 +33,8 @@
         "cweagans/composer-patches": "~1.0",
         "burdamagazinorg/thunder": "dev-8.x-1.x",
         "drush/drush": "~8.0",
-        "drupal/console": "~0.10"
+        "drupal/console": "~0.10",
+        "burdamagazinorg/thunder-infrastructure-ci": "dev-8.x-1.x"
     },
     "require-dev": {
         "phing/phing": "~2.13",

@@ -26,3 +26,4 @@ docroot/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
 docroot/drupal/sites/simpletest
+
