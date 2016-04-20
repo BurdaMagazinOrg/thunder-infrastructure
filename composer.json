@@ -34,10 +34,9 @@
         "burdamagazinorg/thunder": "dev-8.x-1.x",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
-        "burdamagazinorg/thunder-infrastructure-ci": "dev-8.x-1.x"
+        "burdamagazinorg/thunder-infrastructure-ci-travis": "dev-8.x-1.x"
     },
     "require-dev": {
-        "phing/phing": "~2.13",
         "behat/mink": "~1.6",
         "behat/mink-goutte-driver": "~1.2",
         "jcalderonzumba/gastonjs": "^1.1@dev",
@@ -69,6 +68,7 @@
     },
     "extra": {
         "installer-paths": {
+            "ci/{$name}": ["burdamagazinorg/thunder-infrastructure-ci-travis"],
             "docroot/core": ["type:drupal-core"],
             "docroot/modules/contrib/{$name}": ["type:drupal-module"],
             "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
