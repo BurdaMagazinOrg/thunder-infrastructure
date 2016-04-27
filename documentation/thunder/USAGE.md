@@ -66,16 +66,7 @@ you get your acquia settings file include from your acquia clouds settings.php
     ~/your-project-dir $ cp settings/example.settings.acquia.php settings/settings.acquia.php
     ~/your-project-dir $ cp settings/example.settings.local.php settings/settings.local.php
 
-Create your projects drush make file and include the thunder make file in it. Add all additional modules not provided by thunder to this make file.
-
-    ~/your-project-dir $ touch your-project.yml
-
-The file should at least contain the following lines:
-
-    includes:
-      thunder:
-        thunder.yml
-        
+Add all additional modules not provided by thunder to the make.yml file.
 
 Copy example build properties file and change its content to match your environment. Replace the line makefile=thunder.yml with your makefile. 
 
