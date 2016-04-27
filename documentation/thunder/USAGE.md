@@ -31,7 +31,7 @@ Add the thunder repository to your repository as an upstream repository and fetc
     
 Now merge the core to your project, you can merge a specific version tag or simply master, which points the most current release
 
-    ~/your-project-dir $ git merge upstream/master
+    ~/your-project-dir $ git merge upstream/8.x-1.x
 
 ### Prepare environment
 The thunder repository contains several example files which help to configure a working development environment, 

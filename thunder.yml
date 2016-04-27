@@ -27,7 +27,7 @@ projects:
 
   acquia_lift:
     type: "module"
-    version: "1.0-alpha3"
+    version: "1.0-alpha4"
 
   imagemagick:
    type: "module"
