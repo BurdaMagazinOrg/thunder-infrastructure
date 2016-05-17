@@ -64,7 +64,7 @@ install:
   - java -jar selenium-server-standalone-2.42.1.jar > /dev/null 2>&1 &
 
   # Build the current branch
-  - echo "environment=travis" >> build.properties
+  - printf "\nenvironment=travis" >> build.properties
   - export MAKEFILE_HASH=`drush msha make.yml --porcelain=true`
   - $TRAVIS_BUILD_DIR/travis/scripts/build-core.sh
 
