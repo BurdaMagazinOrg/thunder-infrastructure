@@ -6,20 +6,20 @@ defaults:
     subdir: "contrib"
 
 includes:
-  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?h=8.x-1.0-beta5
-  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?h=8.x-1.0-beta5
+  - http://cgit.drupalcode.org/thunder/plain/drupal-org.make.yml?h=8.x-1.0-beta6
+  - http://cgit.drupalcode.org/thunder/plain/develop.make.yml?h=8.x-1.0-beta6
 
 # Drupal core
 projects:
   drupal:
     type: "core"
-    version: "8.0.6"
+    version: "8.1.1"
     translations:
       - de
 
   thunder:
     type: "profile"
-    version: "1.0-beta5"
+    version: "1.0-beta6"
 
   acquia_connector:
     type: "module"
@@ -28,6 +28,20 @@ projects:
   acquia_lift:
     type: "module"
     version: "1.0-alpha4"
+
+  ad_integration:
+    type: "module"
+    download:
+      url: "http://git.drupal.org/sandbox/daniel.bosen/2660394.git"
+      revision: "117972530ca23354cf77401e84f40e23eeda9bcc"
+      branch: "8.x-1.x"
+
+  burdamagazine_lift:
+   type: "module"
+   download:
+     url: "https://github.com/BurdaMagazinOrg/module-burdamagazine_lift.git"
+     revision: "9c2f18321aebfc6e410c483996f7dca3d315115d"
+     branch: "8.x-1.x"
 
   imagemagick:
    type: "module"
