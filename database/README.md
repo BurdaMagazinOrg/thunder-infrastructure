@@ -2,7 +2,6 @@
 This dump is used for behat tests it is created by doing the following steps
 
     drush si thunder --account-name=admin --account-pass=admin --site-mail=admin@example.com --yes
-    drush cset system.site uuid <your site uuid> --yes
     drush config-import -y 
     drush updb -y
     drush config-import -y 
