@@ -61,7 +61,7 @@ install:
 
   # Setup files
   - chmod -R 777 docroot/sites/default
-  - cp ci/travis/travis.settings.php docroot/sites/default/settings.php
+  - cp ci/travis/travis.settings.php docroot/sites/default/settings.local.php
 
   # Disable sendmail
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -76,7 +76,7 @@ install:
 
 before_script:
   - cd docroot
-  - drush sqlc < ../tests/behat/database/project.sql --yes
+  - drush sqlc < ../database/project.sql --yes
 
   # Start web server
   - drush runserver 8888 > /dev/null 2>&1 &
@@ -95,7 +95,7 @@ before_script:
 
 script:
   # Run Behat tests.
-  - behat --config $TRAVIS_BUILD_DIR/ci/travis/travis.behat.yml
+  - $TRAVIS_BUILD_DIR/bin/behat --config travis.behat.yml
 
 after_success:
   - $TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh
