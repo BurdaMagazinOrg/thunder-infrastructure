@@ -42,10 +42,13 @@ function deploy_to_acquia() {
 
     mkdir -pv config
 
-    rsync -ah --delete ../docroot/ docroot/
-    rsync -ah --delete ../config/sync/ config/sync/
-    rsync -ah --delete ../hooks/ hooks/
-    rsync -ah --delete ../vendor/ vendor/
+    rsync -ah --delete --exclude .git/ --exclude node_modules/ ../docroot/ docroot/
+    rsync -ah --delete --exclude .git/ ../config/sync/ config/sync/
+    rsync -ah --delete --exclude .git/ ../hooks/ hooks/
+    rsync -ah --delete --exclude .git/ ../vendor/ vendor/
+    rsync -ah --delete --exclude .git/ ../bin/ bin/
+    rsync -ah --delete --exclude .git/ ../robo/ robo/
+    rsync -ah --delete --exclude .git/ ../RoboFile.php RoboFile.php
 
     # do not fix line endings, keep everything as is
     echo "* -text" > docroot/.gitattributes
