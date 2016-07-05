@@ -18,10 +18,7 @@ repo_url="$5"
 repo_type="$6"
 
 checkout_path="/var/www/html/${site}.${target_env}"
-drush_cmd="drush8 --verbose @${site}.${target_env}"
+robo_cmd="${checkout_path}/bin/robo"
 
-${drush_cmd} sset system.maintenance_mode 1
-${drush_cmd} config-import --source=${checkout_path}/config/sync --yes
-${drush_cmd} updatedb --yes
-${drush_cmd} config-import --source=${checkout_path}/config/sync --yes
-${drush_cmd} sset system.maintenance_mode 0
+cd ${checkout_path}
+${robo_cmd} site:update ${target_env} --maintenance-mode
