@@ -55,6 +55,17 @@
         ]
     },
     "scripts": {
+        "dependency-cleanup": [
+            "rm -rf bin",
+            "rm -rf docroot/core",
+            "rm -rf docroot/libraries",
+            "rm -rf docroot/modules/contrib",
+            "rm -rf docroot/profiles/contrib",
+            "rm -rf docroot/themes/contrib",
+            "rm -rf drush/contrib",
+            "rm -rf vendor",
+            "echo \"(!) Now you can run 'composer install' to get the latest dependencies.\""
+        ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::buildScaffold",
