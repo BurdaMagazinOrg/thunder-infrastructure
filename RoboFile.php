@@ -3,7 +3,7 @@
 use Thunder\Robo\RoboFileBase;
 
 /**
- * Das Kochrezept: Console commands configuration for Robo task runner.
+ * Thunder: Console commands configuration for Robo task runner.
  *
  * @see http://robo.li/
  */
