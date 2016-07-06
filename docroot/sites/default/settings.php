@@ -15,14 +15,8 @@ $config['system.performance']['fast_404']['exclude_paths'] = '/\/(?:styles)|(?:s
 $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 $config['system.performance']['fast_404']['html'] = '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
-// Set temporary folder.
-$config['system.file']['path.temporary'] = "../tmp";
-
 // Set translations folder.
-$config['locale.settings']['translation.path'] = "sites/default/files/translations";
-
-// Set private folder.
-$settings['file_private_path'] = '../private';
+$config['locale.settings']['translation.path'] = $settings['file_public_path'] . '/translations';
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod).
