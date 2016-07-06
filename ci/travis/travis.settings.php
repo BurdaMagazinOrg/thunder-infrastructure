@@ -1,5 +1,16 @@
 <?php
-// settings for use with travis
+
+/**
+ * @file
+ * Settings for 'travis' environment.
+ */
+
+// Set temporary folder.
+$config['system.file']['path.temporary'] = '../tmp';
+
+// Set private folder.
+$settings['file_private_path'] = '../private';
+
 $databases['default']['default'] = array (
   'database' => 'drupal',
   'username' => 'root',
@@ -10,9 +21,3 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\Core\Database\Driver\mysql',
   'driver' => 'mysql',
 );
-
-$settings['hash_salt'] = 'asdkljhasdf023as1assds74sd';
-
-$config_directories['sync'] = '../config/sync';
-
-$settings['install_profile'] = 'thunder';
