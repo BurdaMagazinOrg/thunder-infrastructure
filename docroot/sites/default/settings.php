@@ -39,9 +39,10 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
  *
  * Keep this code block at the end of this file to take full effect.
  */
-$siteEnvironment = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local';
+$siteEnvironment = getenv('AH_SITE_ENVIRONMENT');
+$siteEnvironment = !empty($siteEnvironment) ? $siteEnvironment : 'local';
 
-$stageSettingsFilePath = __DIR__ . '/settings.' . $siteEnvironment . '.php';
+$stageSettingsFilePath = DRUPAL_ROOT . '/sites/default/settings.' . $siteEnvironment . '.php';
 if (file_exists($stageSettingsFilePath)) {
  include $stageSettingsFilePath;
 }
