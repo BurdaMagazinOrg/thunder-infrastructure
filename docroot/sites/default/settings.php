@@ -25,7 +25,7 @@ if (file_exists('/var/www/site-php')) {
  require('<insert your acquia settings file>');
 }
 
-$settings['install_profile'] = '<insert your profile>';
+// Config path.
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
 
@@ -46,3 +46,6 @@ $stageSettingsFilePath = DRUPAL_ROOT . '/sites/default/settings.' . $siteEnviron
 if (file_exists($stageSettingsFilePath)) {
  include $stageSettingsFilePath;
 }
+
+// Force thunder as install profile.
+$settings['install_profile'] = 'thunder';
