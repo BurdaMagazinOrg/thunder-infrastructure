@@ -28,3 +28,6 @@ docroot/sites/*/private
 
 # Ignore SimpleTest multi-site environment.
 docroot/drupal/sites/simpletest
+
+# Ignore Acquia Dev Desktop configs.
+docroot/sites/*.dd
