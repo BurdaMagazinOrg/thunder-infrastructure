@@ -6,7 +6,7 @@
  */
 
 // Set temporary folder.
-$config['system.file']['path.temporary'] = '../tmp';
+$config['system.file']['path']['temporary'] = '../tmp';
 
 // Set private folder.
 $settings['file_private_path'] = '../private';
