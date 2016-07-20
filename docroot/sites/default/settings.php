@@ -7,7 +7,6 @@
 
 require_once DRUPAL_ROOT . '/sites/default/default.settings.php';
 
-die('Provide salt in settings.php!');
 $settings['hash_salt'] = '';
 
 // Fast 404 pages
