@@ -66,7 +66,7 @@ class ScriptHandler {
   }
 
   /**
-   * Moves front-end libraries to Lightning's installed directory.
+   * Moves front-end libraries to Thunder's installed directory.
    *
    * @param \Composer\Script\Event $event
    *   The script event.
@@ -76,14 +76,14 @@ class ScriptHandler {
     if (isset($extra['installer-paths'])) {
       foreach ($extra['installer-paths'] as $path => $criteria) {
         if (array_intersect(['drupal/thunder', 'type:drupal-profile'], $criteria)) {
-          $lightning = $path;
+          $thunder = $path;
         }
       }
-      if (isset($lightning)) {
-        $lightning = str_replace('{$name}', 'thunder', $lightning);
+      if (isset($thunder)) {
+        $thunder = str_replace('{$name}', 'thunder', $thunder);
         $executor = new ProcessExecutor($event->getIO());
         $output = NULL;
-        $executor->execute('npm install', $output, $lightning);
+        $executor->execute('npm install', $output, $thunder);
       }
     }
   }
