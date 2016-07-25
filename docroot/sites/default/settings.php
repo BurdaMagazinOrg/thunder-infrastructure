@@ -7,8 +7,6 @@
 
 require_once DRUPAL_ROOT . '/sites/default/default.settings.php';
 
-$settings['hash_salt'] = '';
-
 // Fast 404 pages
 $config['system.performance']['fast_404']['exclude_paths'] = '/\/(?:styles)|(?:system\/files)\//';
 $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
