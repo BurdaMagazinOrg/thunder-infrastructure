@@ -53,7 +53,7 @@ When installing the given `composer.json` some tasks are taken care of:
 ## Installing Thunder
 This project comes with some robo (a Task Runner for php) scripts, which can install and update the site.
 
-To install the site run `./bin/robo site:install [environment]`.
+To install the site, run `./bin/robo site:install [environment]`.
 * `[environment]`is `local` for installations
 where the database settings are known, 
 * or `devdesktop`, if the Acquia DevDesktop is used.
@@ -65,6 +65,12 @@ If no database dump exists in `./database`, the script will install the site, en
 If a database dump exists, it will just import it.
  
 ## Updating Thunder
+
+### Project update
+To update the site, run `./bin/robo site:update [environment]`. (Have a look at *Installing Thunder* to see, what `[environment]` you need)  
+This will import the config, apply database and schema updates and update the locale.  
+
+### File update
 
 This project will attempt to keep all of your Thunder and drupal core files up-to-date; the 
 project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
