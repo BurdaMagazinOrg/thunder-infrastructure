@@ -37,7 +37,16 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
  * Keep this code block at the end of this file to take full effect.
  */
 $siteEnvironment = getenv('AH_SITE_ENVIRONMENT');
-$siteEnvironment = !empty($siteEnvironment) ? $siteEnvironment : 'local';
+// If we are not on an Acquia Server
+if(empty($siteEnvironment)) {
+  if (isset($_SERVER['DEVDESKTOP_DRUPAL_SETTINGS_DIR'])) {
+    $siteEnvironment = 'devdesktop'; // use devdesktop
+  }
+  else {
+    $siteEnvironment = 'local'; // or local environment
+  }
+}
+
 
 $stageSettingsFilePath = DRUPAL_ROOT . '/sites/default/settings.' . $siteEnvironment . '.php';
 if (file_exists($stageSettingsFilePath)) {
