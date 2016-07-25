@@ -54,6 +54,7 @@ When installing the given `composer.json` some tasks are taken care of:
 This project comes with some robo (a Task Runner for php) scripts, which can install and update the site.
 
 To install the site, run `./bin/robo site:install [environment]`.
+
 * `[environment]`is `local` for installations
 where the database settings are known, 
 * or `devdesktop`, if the Acquia DevDesktop is used.
