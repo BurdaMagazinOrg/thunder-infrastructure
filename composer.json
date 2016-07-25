@@ -54,11 +54,13 @@
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalProject\\composer\\ScriptHandler::deployLibraries"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalProject\\composer\\ScriptHandler::deployLibraries"
         ]
     },
     "extra": {
@@ -73,7 +75,8 @@
             "excludes": [
                 "update.php"
             ]
-        }
+        },
+        "enable-patching": true
     },
     "config": {
         "bin-dir": "bin/"
