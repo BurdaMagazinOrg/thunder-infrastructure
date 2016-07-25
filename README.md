@@ -43,12 +43,27 @@ When installing the given `composer.json` some tasks are taken care of:
 * Modules (packages of type `drupal-module`) will be placed in `docroot/modules/contrib/`
 * Theme (packages of type `drupal-theme`) will be placed in `docroot/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `docroot/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
+* Downloads Drupal scaffold files such as `index.php`, or `.htaccess`
 * Creates `sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `bin/drupal`.
 * Latest version of behat is installed locally for use at `bin/behat`.
+* Latest version ob robo is installed locally for use at `bin/robo`
 
+## Installing Thunder
+This project comes with some robo (a Task Runner for php) scripts, which can install and update the site.
+
+To install the site run `./bin/robo site:install [environment]`.
+* `[environment]`is `local` for installations
+where the database settings are known, 
+* or `devdesktop`, if the Acquia DevDesktop is used.
+    * In this case, you should *Import local Drupal site* in the DevDesktop App, before executing the command
+
+If no database dump exists in `./database`, the script will install the site, enable the the extensions `config` and `locale`,
+ update the locale, export the config and make a database dump.
+ 
+If a database dump exists, it will just import it.
+ 
 ## Updating Thunder
 
 This project will attempt to keep all of your Thunder and drupal core files up-to-date; the 
