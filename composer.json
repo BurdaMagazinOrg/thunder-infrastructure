@@ -26,7 +26,7 @@
         }
     ],
     "require": {
-        "burdamagazinorg/thunder": "~8.0",
+        "burdamagazinorg/thunder": "dev-8.x-1.x",
         "burdamagazinorg/robo": "~2.0",
         "composer/installers": "^1.0",
         "drupal-composer/drupal-scaffold": "^1.3.1",
