@@ -12,14 +12,17 @@ $config['system.performance']['fast_404']['exclude_paths'] = '/\/(?:styles)|(?:s
 $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 $config['system.performance']['fast_404']['html'] = '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
+// Set public file path
+$settings['file_public_path'] = 'sites/default/files';
+
 // Set translations folder.
 $config['locale.settings']['translation.path'] = $settings['file_public_path'] . '/translations';
 
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod).
 if (file_exists('/var/www/site-php')) {
- die('Insert your acquia settings in settings.acquia.php');
- require('<insert your acquia settings file>');
+  die('Insert your acquia settings in settings.acquia.php');
+  require('<insert your acquia settings file>');
 }
 
 // Config path.
@@ -50,7 +53,7 @@ if(empty($siteEnvironment)) {
 
 $stageSettingsFilePath = DRUPAL_ROOT . '/sites/default/settings.' . $siteEnvironment . '.php';
 if (file_exists($stageSettingsFilePath)) {
- include $stageSettingsFilePath;
+  include $stageSettingsFilePath;
 }
 
 // Force thunder as install profile.
