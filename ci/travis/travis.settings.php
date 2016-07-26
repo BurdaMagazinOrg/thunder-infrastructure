@@ -4,6 +4,8 @@
  * @file
  * Settings for 'travis' environment.
  */
+// Set hash salt
+$settings['hash_salt'] = 'travis hash salt';
 
 // Set temporary folder.
 $config['system.file']['path']['temporary'] = '../tmp';
