@@ -21,7 +21,7 @@ $config['locale.settings']['translation.path'] = $settings['file_public_path'] .
 // On Acquia Cloud, this include file configures Drupal to use the correct
 // database in each site environment (Dev, Stage, or Prod).
 if (file_exists('/var/www/site-php')) {
-  die('Insert your acquia settings in settings.acquia.php');
+  die('Insert your acquia settings in settings.php');
   require('<insert your acquia settings file>');
 }
 
