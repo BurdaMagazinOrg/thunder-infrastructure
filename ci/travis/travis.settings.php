@@ -13,7 +13,7 @@ $config['system.file']['path']['temporary'] = '../tmp';
 // Set private folder.
 $settings['file_private_path'] = '../private';
 
-$databases['default']['default'] = array (
+$databases['default']['default'] = array(
   'database' => 'drupal',
   'username' => 'root',
   'password' => '',
