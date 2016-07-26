@@ -50,7 +50,6 @@ install:
 
   # Build drush/phing dependencies
   - travis_retry composer self-update && composer --version
-  - echo "{\"github-oauth\":{\"github.com\":\"$GITHUB_TOKEN\"}}" > ~/.composer/auth.json
   - travis_retry composer install --prefer-dist --no-interaction --optimize-autoloader
   - export PATH="$TRAVIS_BUILD_DIR/bin:$PATH"
 
