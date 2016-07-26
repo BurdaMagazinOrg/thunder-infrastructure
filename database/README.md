@@ -1,23 +1,28 @@
-# Travis dump
-This dump is used for behat tests it is created by doing the following steps
+# Dump file: project.sql
 
-    drush si thunder --account-name=admin --account-pass=admin --site-mail=admin@example.com --yes
-    drush cset system.site uuid <your site uuid> --yes
-    drush config-import -y 
-    drush updb -y
-    drush config-import -y 
-    drush locale-update
-    drush cr
-    drush sql-dump --ordered-dump --structure-tables-list=cache_data,cache_bootstrap,cache_container,cache_config,cache_default,cache_discovery,cache_dynamic_page_cache,cache_entity,cache_menu,cache_migrate,cache_render,cache_toolbar,cachetags,watchdog,sessions > project.sql
+This dump file is used for:
 
-To keep it up to date it should not be neccessary to recreate all this steps, just do the following after taking a backup of your database:
+* During Travis builds (e.g. as a base for Behat tests)
+* Re-installs of the site
 
-    drush sql-drop # don't forget to backup first!
-    drush sqlc < project.sql
-    drush config-import -y
-    drush updb -y
-    drush config-import -y # make sure nothing needs to be imported at this step
-    drush locale-update
-    drush cr
-    drush sql-dump --ordered-dump --structure-tables-list=cache_data,cache_bootstrap,cache_container,cache_config,cache_default,cache_discovery,cache_dynamic_page_cache,cache_entity,cache_menu,cache_migrate,cache_render,cache_toolbar,cachetags,watchdog,sessions > project.sql
+### Initial creation
 
+To create an inital initial dump file, install the Drupal site with the following command:
+
+```bin/robo site:install <environment>```
+
+See ```README.md``` in project root for more information about ```<environment>``` placeholder and the ```site:install``` Robo command as well.
+
+The dump file, as well as all configuration YAML files, will be exported automatically after the installation process.
+
+### Updating
+
+As this dump is used during Travis builds, it should be updated regularly, so its data is up to date with the exported config. 
+
+Run the following command to create a fresh install based on an existing dump file, with all updates applied:
+
+```bin/robo dump:update <environment>```
+
+See ```README.md``` in project root for more information about ```<environment>``` placeholder and the ```dump:update``` Robo command as well.
+
+**!!! IMPORTANT NOTE !!!** This process drops all database tables before importing the existing dump - All data will be lost! **Back up your database before running this command.**

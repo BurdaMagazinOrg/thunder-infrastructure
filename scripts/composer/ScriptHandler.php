@@ -65,6 +65,31 @@ class ScriptHandler {
     }
   }
 
+  public static function dependencyCleanup() {
+    $fs = new Filesystem();
+    $root = getcwd();
+
+    $directories = array(
+      "bin",
+      "docroot/core",
+      "docroot/libraries",
+      "docroot/modules/contrib",
+      "docroot/profiles/contrib",
+      "docroot/themes/contrib",
+      "drush/contrib",
+      "vendor",
+    );
+
+    $directories = array_map(function ($directory) use ($root) {
+      return $root.'/'.$directory;
+    }, $directories);
+
+    $fs->remove($directories);
+
+    echo "(!) Now you can run 'composer install' to get the latest dependencies.";
+
+  }
+
   /**
    * Moves front-end libraries to Thunder's installed directory.
    *

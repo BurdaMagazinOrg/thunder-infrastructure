@@ -7,6 +7,11 @@ php:
 git:
   depth: 5
 
+env:
+  global:
+    # Set site environment
+    - AH_SITE_ENVIRONMENT=travis
+
 # travis will test and deploy only the branches and tags as show below
 # right now travis does not make a difference between branches and tags
 # tags starting with hotfix and tags in the form of "v1.0.0" will be tested
@@ -45,8 +50,7 @@ install:
 
   # Build drush/phing dependencies
   - travis_retry composer self-update && composer --version
-  - echo "{\"github-oauth\":{\"github.com\":\"$GITHUB_TOKEN\"}}" > ~/.composer/auth.json
-  - travis_retry composer install --prefer-dist --no-interaction
+  - travis_retry composer install --prefer-dist --no-interaction --optimize-autoloader
   - export PATH="$TRAVIS_BUILD_DIR/bin:$PATH"
 
   # Setting Behat environment
@@ -61,7 +65,7 @@ install:
 
   # Setup files
   - chmod -R 777 docroot/sites/default
-  - cp ci/travis/travis.settings.php docroot/sites/default/settings.php
+  - cp ci/travis/travis.settings.php docroot/sites/default/settings.travis.php
 
   # Disable sendmail
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -75,10 +79,11 @@ install:
   - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 
 before_script:
-  - cd docroot
-  - drush sqlc < ../tests/behat/database/project.sql --yes
+  # Install site
+  - $TRAVIS_BUILD_DIR/bin/robo site:install $AH_SITE_ENVIRONMENT
 
   # Start web server
+  - cd $TRAVIS_BUILD_DIR/docroot
   - drush runserver 8888 > /dev/null 2>&1 &
 
   - drush config-import --source=../config/sync --yes
@@ -91,11 +96,9 @@ before_script:
   - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 1; done
   - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
 
-  - cd ../tests/behat
-
 script:
   # Run Behat tests.
-  - behat --config $TRAVIS_BUILD_DIR/ci/travis/travis.behat.yml
+  - $TRAVIS_BUILD_DIR/bin/behat --config $TRAVIS_BUILD_DIR/tests/behat/travis.behat.yml
 
 after_success:
   - $TRAVIS_BUILD_DIR/ci/travis/scripts/deploy.sh
