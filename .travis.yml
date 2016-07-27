@@ -50,7 +50,7 @@ install:
 
   # Build drush/phing dependencies
   - travis_retry composer self-update && composer --version
-  - travis_retry composer install --prefer-dist --no-interaction --optimize-autoloader
+  - travis_retry composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
   - export PATH="$TRAVIS_BUILD_DIR/bin:$PATH"
 
   # Setting Behat environment
