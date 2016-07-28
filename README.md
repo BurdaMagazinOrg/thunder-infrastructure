@@ -26,7 +26,7 @@ installation.
 
 ```
 cd my-project-dir
-composer require drupal/devel:8.*
+composer require drupal/devel:1.*
 ```
 
 The `composer create-project` command passes ownership of all files to the 
