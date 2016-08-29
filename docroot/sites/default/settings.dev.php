@@ -32,3 +32,4 @@ if ($needsAuthentication) {
     exit;
   }
 }
+/**/
