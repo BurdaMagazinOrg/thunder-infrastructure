@@ -28,13 +28,18 @@
         }
     ],
     "require": {
-        "burdamagazinorg/thunder": "~8.0",
+        "burdamagazinorg/ad_integration": "~1.0",
+        "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/robo": "~2.0",
+        "burdamagazinorg/thunder": "~8.0",
         "composer/installers": "^1.0",
-        "drupal-composer/drupal-scaffold": "^1.3.1",
         "cweagans/composer-patches": "~1.0",
-        "drush/drush": "~8.0",
-        "drupal/console": "~0.10"
+        "drupal/acquia_lift": "~1.0",
+        "drupal/console": "~0.10",
+        "drupal/imagemagick": "~1.0",
+        "drupal/tracdelight": "~1.0",
+        "drupal-composer/drupal-scaffold": "^1.3.1",
+        "drush/drush": "~8.0"
     },
     "require-dev": {
         "behat/mink": "~1.6",
@@ -46,8 +51,8 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "2.7.*"
     },
-    "conflict": {
-        "drupal/drupal": "*"
+    "replace": {
+        "drupal/features": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
