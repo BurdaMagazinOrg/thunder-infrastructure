@@ -52,6 +52,8 @@ function deploy_to_acquia() {
 
     # do not fix line endings, keep everything as is
     echo "* -text" > docroot/.gitattributes
+    # do not ignore files on deploy
+    rm -rf docroot/profiles/contrib/thunder/.gitignore
 
     git config user.email "$LAST_COMMIT_USER_EMAIL"
     git config user.name "$LAST_COMMIT_USER"
