@@ -30,15 +30,16 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
+
     ],
     "require": {
         "burdamagazinorg/ad_integration": "~1.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/robo": "~3.0",
-        "burdamagazinorg/thunder": "~8.0",
+        "burdamagazinorg/thunder": "dev-develop",
         "composer/installers": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1",
-        "cweagans/composer-patches": "~1,0",
+        "cweagans/composer-patches": "^1.6",
         "drupal/acquia_lift": "~1.0",
         "drupal/console": "~1.0",
         "drupal/imagemagick": "~1.0",
@@ -70,13 +71,11 @@
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "DrupalProject\\composer\\ScriptHandler::deployLibraries"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "DrupalProject\\composer\\ScriptHandler::deployLibraries"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
