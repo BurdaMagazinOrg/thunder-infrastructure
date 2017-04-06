@@ -29,14 +29,17 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "/Users/d436621/Projects/Thunder/thunder-distribution"
         }
-
     ],
     "require": {
         "burdamagazinorg/ad_integration": "~1.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/robo": "~3.0",
-        "burdamagazinorg/thunder": "dev-develop",
+        "burdamagazinorg/thunder": "~8.2",
         "composer/installers": "^1.2",
         "oomphinc/composer-installers-extender": "^1.1",
         "cweagans/composer-patches": "^1.6",
@@ -82,7 +85,7 @@
         "installer-types": ["library"],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}/": [
+            "docroot/libraries/{$name}": [
                 "type:drupal-library",
                 "vendor:bower-asset",
                 "vendor:npm-asset"
