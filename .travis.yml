@@ -1,8 +1,12 @@
 language: php
-sudo: false
+
+cache:
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
 
 php:
-  - 5.6
+  - 7.1
 
 git:
   depth: 5
@@ -12,6 +16,9 @@ env:
     # Set site environment
     - AH_SITE_ENVIRONMENT=travis
 
+# Use newer distribution on Travis CI (Ubuntu 14.04 - Trusty)
+dist: trusty
+
 # travis will test and deploy only the branches and tags as show below
 # right now travis does not make a difference between branches and tags
 # tags starting with hotfix and tags in the form of "v1.0.0" will be tested
@@ -20,8 +27,7 @@ branches:
     - master
     - develop
     - testing
-    - 8.x-1.x
-    - 8.x-2.x
+    - /^8\.x-[0-9]+\.x/
     - /^hotfix/
     - /^v[0-9]+\.[0-9]+\.[0-9]+/
 
@@ -29,12 +35,6 @@ mysql:
   database: drupal
   username: root
   encoding: utf8
-
-# Cache Composer & Drush directories.
-cache:
-  directories:
-    - $HOME/.composer/cache
-    - $HOME/.drush/cache
 
 install:
   # Disable debugging
@@ -86,9 +86,6 @@ before_script:
   - cd $TRAVIS_BUILD_DIR/docroot
   - drush runserver 8888 > /dev/null 2>&1 &
 
-  - drush config-import --source=../config/sync --yes
-  - drush updb --yes
-  - drush config-import --source=../config/sync --yes
   - drush pm-uninstall dblog --yes
   - drush cset system.site page.front /taxonomy/term/1 --yes
 
