@@ -29,10 +29,6 @@
         {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        {
-            "type": "vcs",
-            "url": "/Users/d436621/Projects/Thunder/thunder-distribution"
         }
     ],
     "require": {
