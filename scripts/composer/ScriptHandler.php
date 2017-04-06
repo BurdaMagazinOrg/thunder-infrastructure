@@ -6,9 +6,6 @@ use DrupalComposer\DrupalScaffold\Plugin;
 use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 
-/**
- *
- */
 class ScriptHandler {
 
   protected static function getDrupalRoot($project_root) {
