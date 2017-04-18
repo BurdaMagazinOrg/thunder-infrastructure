@@ -31,7 +31,7 @@
         "burdamagazinorg/ad_integration": "~1.0",
         "burdamagazinorg/hm_newsletter": "~1.0",
         "burdamagazinorg/robo": "~2.0",
-        "burdamagazinorg/thunder": "~8.0",
+        "burdamagazinorg/thunder": "~8.1.0",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "~1.0",
         "drupal/acquia_lift": "~1.0",
