@@ -2,7 +2,7 @@ language: php
 sudo: false
 
 php:
-  - 7.1
+  - 5.6
 
 git:
   depth: 5
@@ -24,7 +24,6 @@ branches:
     - 8.x-2.x
     - /^hotfix/
     - /^v[0-9]+\.[0-9]+\.[0-9]+/
-    - feature/composer-update-tests-integration
 
 mysql:
   database: drupal
@@ -96,9 +95,6 @@ before_script:
   # Test if server started
   - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 1; done
   - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
-
-  # Only for testing for Cron execution
-  - export TRAVIS_EVENT_TYPE=cron
 
 script:
   # Check composer update (works only for cron executions)
