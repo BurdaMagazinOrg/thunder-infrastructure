@@ -4,6 +4,10 @@ function deploy_to_acquia() {
     echo "Deploying $TRAVIS_BRANCH"
 
     cd $TRAVIS_BUILD_DIR
+
+    # Remove dev dependencies before deploying.
+    composer install --no-dev
+
     LAST_COMMIT_INFO=$(git log -1 --pretty="[%h] (%an) %B")
     LAST_COMMIT_USER=$(git show -s --format="%an")
     LAST_COMMIT_USER_EMAIL=$(git show -s --format="%ae")
