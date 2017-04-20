@@ -96,9 +96,6 @@ before_script:
   - nc -zvv localhost 4444; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 4444..."; nc -zvv localhost 4444; out=$?; sleep 1; done
   - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
 
-  # Only for testing for Cron execution
-  - export TRAVIS_EVENT_TYPE=cron
-
 script:
   # Check composer update (works only for cron executions)
   - bash -e $TRAVIS_BUILD_DIR/ci/travis/scripts/test-composer-update.sh
