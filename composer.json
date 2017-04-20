@@ -39,7 +39,7 @@
         "drupal/imagemagick": "~1.0",
         "drupal/tracdelight": "~1.0",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drush/drush": "~8.0"
+        "drush/drush": "^8.1.10"
     },
     "require-dev": {
         "behat/mink": "~1.7",
