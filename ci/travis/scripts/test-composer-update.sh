@@ -19,7 +19,7 @@ echo 'Executing composer update test.'
 # composer file and project Robo scripts. Also project directory could be used
 # later for deployment and there should not be any interference between it and
 # update testing script.
-composer global require "burdamagazinorg/update-tester:@dev"
+composer global require "burdamagazinorg/update-tester:~1.0"
 
 # Robo has to be available globally for proper execution of Robo scripts. That's
 # why composer bin path has to be set in $PATH and it has to be first in path
