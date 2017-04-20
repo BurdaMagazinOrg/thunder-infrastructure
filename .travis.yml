@@ -95,6 +95,9 @@ before_script:
   - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
 
 script:
+  # Check composer update (works only for cron executions)
+  - bash -e $TRAVIS_BUILD_DIR/ci/travis/scripts/test-composer-update.sh
+
   # Run Behat tests.
   - $TRAVIS_BUILD_DIR/bin/behat --config $TRAVIS_BUILD_DIR/tests/behat/travis.behat.yml
 
