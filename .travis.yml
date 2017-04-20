@@ -24,7 +24,6 @@ branches:
     - 8.x-2.x
     - /^hotfix/
     - /^v[0-9]+\.[0-9]+\.[0-9]+/
-    - feature/composer-update-tests-integration
 
 mysql:
   database: drupal
