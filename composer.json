@@ -44,7 +44,7 @@
 
         "drupal/ad_entity": "~1.0",
         "burdamagazinorg/hm_newsletter": "~2.0",
-        "burdamagazinorg/robo": "~3.0",
+        "burdamagazinorg/robo": "~4.0",
         "drupal/acquia_lift": "~3.0",
         "drupal/imagemagick": "~2.0"
     },
