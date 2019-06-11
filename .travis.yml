@@ -1,13 +1,18 @@
 language: php
-sudo: true
+dist: xenial
+
+php:
+  - 7.2
+
+services:
+  - mysql
 
 cache:
   apt: true
   directories:
-  - "$HOME/.composer/cache"
-
-php:
-  - 7.1
+    - "$HOME/.composer/cache"
+    - "$HOME/.drush/cache"
+    - "$HOME/.npm"
 
 git:
   depth: 5
@@ -17,25 +22,12 @@ env:
     # Set site environment
     - AH_SITE_ENVIRONMENT=travis
 
-# Use newer distribution on Travis CI (Ubuntu 14.04 - Trusty)
-dist: trusty
-
 # travis will test and deploy only the branches and tags as show below
 # right now travis does not make a difference between branches and tags
 # tags starting with hotfix and tags in the form of "v1.0.0" will be tested
 branches:
   only:
-    - master
-    - develop
-    - testing
     - /^8\.x-[0-9]+\.x/
-    - /^hotfix/
-    - /^v[0-9]+\.[0-9]+\.[0-9]+/
-
-mysql:
-  database: drupal
-  username: root
-  encoding: utf8
 
 install:
   # Disable debugging
@@ -70,14 +62,6 @@ install:
 
   # Disable sendmail
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
-  # set php timeouts
-  - echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
-  # Increase the MySQL server timetout and packet size.
-  - mysql -e "SET GLOBAL wait_timeout = 36000;"
-  - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 
 before_script:
   # Install site
