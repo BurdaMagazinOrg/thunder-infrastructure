@@ -49,6 +49,7 @@
         "drupal/imagemagick": "~2.0"
     },
     "require-dev": {
+        "drupal/drupal-extension": "~3.0",
         "webflo/drupal-core-require-dev": "^8.4"
     },
     "minimum-stability": "dev",
